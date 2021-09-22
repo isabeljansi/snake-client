@@ -12,19 +12,46 @@ const connect = function () {
   // code that does something when the connection is first established
   conn.on("connect", () => {
     console.log("Isabel Connected to snek server");
-    
-  });
-
-  conn.on('connect', (client) => {
-    console.log('New client connected!');
     conn.write('Name: IJP');
+    
+
+
+
+const moveUp = (moveActions) => {
+  for (let i = 0; i < moveActions.length; i++) {
+    waitTime = 100 * (i + 1)
+    setTimeout(() => {
+      conn.write(moveActions[i]);
+    }, waitTime)
+  }
+}
+const moveDirection = ['Move: up','Move: up','Move: up','Move: up','Move: up','Move: up','Move: up','Move: left','Move: left','Move: right','Move: right','Move: up'];
+
+moveUp(moveDirection);
+
   });
 
+// //CODE FROM SPINNER TO SETTIME OUT 
 
+// const printWordsForEvery1Sec = (moveActions) => {
+//   for (let i = 0; i < moveActions.length; i++) {
+//     waitTime = 100 * (i + 1)
+//     setTimeout(() => {
+//       conn.write(`${move.Actions[i]}`);
+//     }, waitTime)
+//   }
+// }
+
+// const moveDirection = ['Move: up','Move: up','Move: left','Move: left','Move: right','Move: right','Move: up'];
+// printWordsForEvery1Sec(moveDirection);
+//----
 
 
   // interpret incoming data as text
   conn.setEncoding("utf8");
+
+
+
 
   //code that does something when the connection is terminated
   conn.on('data', (data) => {
