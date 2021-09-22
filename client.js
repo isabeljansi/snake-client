@@ -15,6 +15,14 @@ const connect = function () {
     
   });
 
+  conn.on('connect', (client) => {
+    console.log('New client connected!');
+    conn.write('Name: IJP');
+  });
+
+
+
+
   // interpret incoming data as text
   conn.setEncoding("utf8");
 
